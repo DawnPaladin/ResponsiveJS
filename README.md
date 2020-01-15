@@ -7,7 +7,7 @@ Do you have a responsively designed web page with lots of JavaScript that you wa
 To use, call `responsiveJS.register()` with an object bearing these properties (all of which are optional):
 
 - `name`: Name of your script. Used in various `console.log`s to let you know what's going on.
-- `url`: You can designate a .js file to be loaded and run when the screen is the right size.
+- `url`: You can designate a .js file to be loaded and run when the screen is the right size. Requires jQuery.
 - `activationFunction`: A function to be run when the screen is the right size.
 - `deactivationFunction`: A function to be run when the screen is no longer the right size. You can combine this with the above to have JavaScript features that turn on and off as the window gets resized.
 - `minWidth`: Run `activationFunction` and the script downloaded from `url` when the screen is at least this size. Run `deactivationFunction` if the screen gets smaller than that.
