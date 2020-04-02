@@ -1,0 +1,19 @@
+{
+  "name": "@dawnpaladin/responsive-js",
+  "version": "1.0.0",
+  "description": "Like @media breakpoints from CSS, but for JavaScript.",
+  "main": "responsive.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DawnPaladin/ResponsiveJS.git"
+  },
+  "author": "James Harris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DawnPaladin/ResponsiveJS/issues"
+  },
+  "homepage": "https://github.com/DawnPaladin/ResponsiveJS#readme"
+}
