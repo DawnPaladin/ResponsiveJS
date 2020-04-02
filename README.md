@@ -2,12 +2,14 @@
 
 Like @media breakpoints from CSS, but for JavaScript.
 
+[![npm version](https://badge.fury.io/js/%40dawnpaladin%2Fresponsive-js.svg)](https://www.npmjs.com/package/@dawnpaladin/responsive-js)
+
 Do you have a responsively designed web page with lots of JavaScript that you want to load on the desktop, but not on mobile? This will handle that for you. Designate a `minWidth` and/or a `maxWidth` in pixels; your script will only load and execute when the screen is the right width.
 
 To use, call `responsiveJS.register()` with an object bearing these properties (all of which are optional):
 
 - `name`: Name of your script. Used in various `console.log`s to let you know what's going on.
-- `url`: You can designate a .js file to be loaded and run when the screen is the right size. Requires jQuery.
+- `url`: You can designate a .js file to be loaded and run when the screen is the right size.
 - `activationFunction`: A function to be run when the screen is the right size.
 - `deactivationFunction`: A function to be run when the screen is no longer the right size. You can combine this with the above to have JavaScript features that turn on and off as the window gets resized.
 - `minWidth`: Run `activationFunction` and the script downloaded from `url` when the screen is at least this size. Run `deactivationFunction` if the screen gets smaller than that.
