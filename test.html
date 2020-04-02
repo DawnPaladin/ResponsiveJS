@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<script src="responsive.js"></script>
+	<p id="p">Loading...</p>
+	
+	<script>
+		responsiveJS.register({
+			name: "Desktop script",
+			minWidth: 1600,
+			url: "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js",
+			activationFunction: function() {
+				console.log("Desktop mode");
+				document.getElementById('p').innerHTML = "Desktop";
+				alert(`jQuery version ${jQuery().jquery} loaded`);
+			}
+		})
+		responsiveJS.register({
+			name: "Mobile script",
+			maxWidth: 800,
+			activationFunction: function() {
+				console.log("Mobile mode");
+				document.getElementById('p').innerHTML = "Mobile";
+			}
+		})
+	</script>
+</body>
+</html>

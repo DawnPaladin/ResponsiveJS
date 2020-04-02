@@ -2,8 +2,14 @@
 var responsiveJS = (function() {
 	var registry = [];
 
-	if (!jQuery) console.warn("jQuery not present. Responsively loading scripts from URLs will be unavailable.");
-
+	var loadScript = function(url, callback, errorhandler) {
+		var scriptTag = document.createElement('script');
+		scriptTag.src = url;
+		scriptTag.onload = callback;
+		scriptTag.onerror = errorhandler;
+		document.head.appendChild(scriptTag);
+	}
+	
 	/**
 	 * Add an entry to the list of scripts which will run if the window is the right width.
 	 * @param {Object} entry
@@ -19,7 +25,6 @@ var responsiveJS = (function() {
 		entry.loaded = entry.url ? false : true; // if entry has a URL, mark that there is a file yet to be loaded
 		entry.active = false;
 		if (!entry.name) entry.name = "Entry " + (registry.length + 1);
-		if (entry.url && !jQuery) throw "jQuery not present. Unable to load " + entry.name + " from " + entry.url;
 		entry.activate = function() {
 			if (entry.loaded && !entry.active && entry.activationFunction) {
 				console.log("Activating", entry.name);
@@ -45,19 +50,16 @@ var responsiveJS = (function() {
 				if (!entry.loadingStarted && entry.url) {
 					console.log("Loading", entry.name, "from", entry.url);
 					entry.loadingStarted = true;
-					jQuery.ajax({
-						url: entry.url,
-						dataType: "script",
-						cache: true,
-						success: function() {
+					loadScript(entry.url, 
+						function success() {
 							console.log("Loaded", entry.name);
 							entry.loaded = true;
 							entry.activate();
 						},
-						error: function(jqXHR, textStatus, errorThrown) {
-							console.error("Failed to load", entry.name, ":", textStatus, errorThrown);
+						function error() {
+							console.error("Failed to load", entry.name);
 						}
-					});
+					);
 				}
 				entry.activate();
 			} else {
